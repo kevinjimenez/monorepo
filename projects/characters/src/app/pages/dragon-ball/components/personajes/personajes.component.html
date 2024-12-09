@@ -1,0 +1,17 @@
+@if (charactersQuery.isLoading()) {
+<p>Loading...</p>
+} @else {
+<div
+  class="gap-10 flex flex-wrap items-center justify-center border-blue-900 border-4 p-5"
+>
+  @for (character of charactersQuery.data(); track character.id) {
+  <section
+    class="flex flex-col items-center justify-center cursor-pointer"
+    [routerLink]="[character.id]"
+  >
+    <img [src]="character.image" class="h-60" [alt]="character.name" />
+    <h1 class="text-2xl font-bold text-slate-500">{{ character.name }}</h1>
+  </section>
+  }
+</div>
+}
