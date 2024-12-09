@@ -3,6 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply border-4 border-dotted border-red-500 m-2
-}
+/* body {
+  @apply bg-slate-200
+} */

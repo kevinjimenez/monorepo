@@ -1,16 +1,19 @@
 import { sleep } from '../../helpers/sleep';
-import { Character, CharactersResponse } from '../../interfaces';
+import { CharacterResponse } from '../../interfaces';
 
-export const getCharacterById = async (): Promise<Character> => {
+export const getCharacterById = async (
+  id: string
+): Promise<CharacterResponse> => {
   try {
     await sleep(1500);
+    const url = `https://dragonball-api.com/api/characters/${id}`;
 
-    const response = await fetch('https://dragonball-api.com/api/characters/1');
+    const response = await fetch(url);
     console.log({ response });
 
     if (!response.ok) throw "Can't get personajes";
 
-    const character: Character = await response.json();
+    const character: CharacterResponse = await response.json();
 
     return character;
   } catch (error) {

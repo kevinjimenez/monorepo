@@ -5,7 +5,9 @@ export const getCharacters = async (): Promise<Character[]> => {
   try {
     await sleep(1500);
 
-    const response = await fetch('https://dragonball-api.com/api/characters');
+    const response = await fetch(
+      'https://dragonball-api.com/api/characters?limit=60'
+    );
     console.log({ response });
 
     if (!response.ok) throw "Can't get personajes";

@@ -1,11 +1,29 @@
-<h1 class="text-3xl font-bold">
-  <a routerLink="/"> Hello, I'm the layout </a>
-</h1>
-<!-- <nav>
-  <ul>
-    <li>
-      <a routerLink="app-characters">Characters</a>
+<main class="border-4 border-dashed border-blue-400 p-2">
+  <h1 class="text-3xl font-bold">
+    <a routerLink="/"> Hello, I'm the layout </a>
+  </h1>
+  <ul class="flex">
+    <li class="flex-1 mr-2">
+      <a
+        class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+        href="#"
+        >DBZ - Personajes</a
+      >
+    </li>
+    <li class="flex-1 mr-2">
+      <a
+        class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+        href="#"
+        >Nav Item</a
+      >
+    </li>
+    <li class="flex-1 mr-2">
+      <a
+        class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+        href="#"
+        >Nav Item</a
+      >
     </li>
   </ul>
-</nav> -->
-<router-outlet />
+  <router-outlet />
+</main>

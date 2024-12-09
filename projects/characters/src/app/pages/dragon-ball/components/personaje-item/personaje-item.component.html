@@ -1,1 +1,24 @@
-<p>personaje-item works!</p>,
+<main>
+  @if (characterByIdQuery.isLoading()) {
+  <h1>Loading...</h1>
+  } @else { @let character = characterByIdQuery.data()!;
+  <h1>{{ character.name }}</h1>
+  <h2>{{ character.description }}</h2>
+  <section>
+    <img [src]="character.image" class="h-60" />
+  </section>
+  <section>
+    <img [src]="character.originPlanet.image" class="h-60" />
+  </section>
+  <div class="flex flex-wrap items-center justify-center gap-5">
+    @for (transformation of character.transformations; track $index) {
+    <div class="flex flex-col">
+      <h1>{{ transformation.name }}</h1>
+      <img [src]="transformation.image" class="h-60" />
+    </div>
+    } @empty {
+    <h1>No transformations</h1>
+    }
+  </div>
+  }
+</main>
