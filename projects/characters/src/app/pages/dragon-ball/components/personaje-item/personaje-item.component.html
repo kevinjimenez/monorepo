@@ -2,18 +2,44 @@
   @if (characterByIdQuery.isLoading()) {
   <h1>Loading...</h1>
   } @else { @let character = characterByIdQuery.data()!;
-  <h1>{{ character.name }}</h1>
-  <h2>{{ character.description }}</h2>
-  <section>
-    <img [src]="character.image" class="h-60" />
+  <section class="flex gap-x-10 p-5">
+    <figure class="w-1/5">
+      <img
+        style="width: 100%; aspect-ratio: 9/16"
+        [src]="character.image"
+        [alt]="character.name"
+      />
+      <figcaption class="mt-2 text-sm text-center">
+        {{ character.name }}
+      </figcaption>
+    </figure>
+    <article class="flex w-full justify-center items-center">
+      <h2 class="text-pretty">
+        {{ character.description }}
+      </h2>
+    </article>
   </section>
+  <h1>{{ character.gender }}</h1>
+  <h1>{{ character.ki }}</h1>
+  <h1>{{ character.maxKi }}</h1>
+  <h1>{{ character.race }}</h1>
+  <h1>{{ character.affiliation }}</h1>
+
+  <hr />
   <section>
-    <img [src]="character.originPlanet.image" class="h-60" />
+    <img [src]="character.originPlanet.image" class="h-60 rounded-md" />
+    <p>{{ character.originPlanet.name }}</p>
+    <p>{{ character.originPlanet.description }}</p>
+    <p>{{ character.originPlanet.isDestroyed }}</p>
+    <p>{{ character.originPlanet.deletedAt }}</p>
   </section>
+  <hr />
   <div class="flex flex-wrap items-center justify-center gap-5">
-    @for (transformation of character.transformations; track $index) {
+    @for (transformation of character.transformations; track transformation.id)
+    {
     <div class="flex flex-col">
       <h1>{{ transformation.name }}</h1>
+      <h1>{{ transformation.ki }}</h1>
       <img [src]="transformation.image" class="h-60" />
     </div>
     } @empty {

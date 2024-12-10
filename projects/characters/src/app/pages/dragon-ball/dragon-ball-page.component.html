@@ -1,12 +1,8 @@
-<p>dragon-ball-page works!</p>
-<nav class="bg-red-500 w-full px-2 rounded-md">
-  <ul class="flex flex-row gap-x-4 iten-center py-4 text-white">
-    <li>
-      <a routerLink="personajes" class="hover:underline"> personajes </a>
-    </li>
-    <li>
-      <a routerLink="planetas" class="hover:underline"> planetas </a>
-    </li>
-  </ul>
-</nav>
-<router-outlet />
+<main class="border-4 border-dotted border-green-500">
+  <nav class="flex flex-wrap gap-4">
+    <badge routerLink="personajes" title="Personajes" />
+    <badge routerLink="planetas" title="Planetas" />
+  </nav>
+
+  <router-outlet />
+</main>

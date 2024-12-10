@@ -6,7 +6,7 @@ export const getCharacters = async (): Promise<Character[]> => {
     await sleep(1500);
 
     const response = await fetch(
-      'https://dragonball-api.com/api/characters?limit=60'
+      'https://dragonball-api.com/api/characters?limit=100'
     );
     console.log({ response });
 
