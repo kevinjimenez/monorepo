@@ -2,8 +2,12 @@ import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadComponent: () => import('./app.component').then((m) => m.AppComponent),
+  // },
   {
-    path: '',
+    path: 'db-characters',
     loadChildren: () =>
       loadRemoteModule('characters', './routes').then((m) => m.routes),
   },
@@ -14,9 +18,9 @@ export const routes: Routes = [
         (m) => m.NotFoundComponent
       ),
   },
-  {
-    path: '**',
-    redirectTo: 'not-found',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: 'not-found',
+  //   pathMatch: 'full',
+  // },
 ];
