@@ -1,26 +1,30 @@
 import { Injectable, signal } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { getCharacters } from '../actions';
-import { getCharacterById } from '../actions/get-character-by-id.action';
+import { getCharacters, getCharactersByPage } from '../actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharactersService {
-  private id = signal<string | null>(null);
+  private page = signal<number>(1);
 
   charactersQuery = injectQuery(() => ({
     queryKey: ['characters'],
     queryFn: () => getCharacters(),
   }));
 
-  characterByIdQuery = injectQuery(() => ({
-    queryKey: ['character', this.id()],
-    queryFn: () => getCharacterById(this.id()!),
-    enabled: () => this.id() !== null,
+  charactersByPageQuery = injectQuery(() => ({
+    queryKey: ['characters', this.page()],
+    queryFn: () => getCharactersByPage(this.page()),
+    enabled: () => this.page() !== null,
   }));
 
-  set characterId(id: string) {
-    this.id.set(id);
+  public setPage(newPage: number) {
+    console.log({ newPage });
+    this.page.set(newPage);
+  }
+
+  public getPage() {
+    return this.page();
   }
 }

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map, tap } from 'rxjs';
-import { CharactersService } from '../../../../core/services/characters.service';
+import { CharacterService } from '../../../../core/services/character.service';
 
 @Component({
   selector: 'app-personaje-item',
@@ -11,19 +11,20 @@ import { CharactersService } from '../../../../core/services/characters.service'
 })
 export default class PersonajeItemComponent {
   public activatedRoute = inject(ActivatedRoute);
-  public charactersService = inject(CharactersService);
+  public characterService = inject(CharacterService);
 
   characterId = toSignal<string>(
     this.activatedRoute.paramMap.pipe(
       map((params) => params.get('id') ?? ''),
       tap((number) => {
         console.log({ number });
-        this.charactersService.characterId = number;
+        // this.charactersService.characterId = number;
+        this.characterService.setCharacterId(number);
       })
     )
   );
 
   get characterByIdQuery() {
-    return this.charactersService.characterByIdQuery;
+    return this.characterService.characterByIdQuery;
   }
 }

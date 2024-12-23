@@ -12,6 +12,22 @@ export default class PersonajesComponent {
   public charactersService = inject(CharactersService);
 
   get charactersQuery() {
-    return this.charactersService.charactersQuery;
+    return this.charactersService.charactersByPageQuery;
+  }
+
+  public prevPage() {
+    // Obtener desde las query params
+    const newPage = this.charactersService.getPage() - 1;
+    console.log({ newPage });
+
+    if (newPage > 0) this.charactersService.setPage(newPage);
+  }
+
+  public nextPage() {
+    console.log('next');
+
+    // Obtener desde las query params
+    const newPage = this.charactersService.getPage() + 1;
+    this.charactersService.setPage(newPage);
   }
 }
