@@ -1,17 +1,12 @@
 import { Injectable, signal } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
-import { getCharacters, getCharactersByPage } from '../actions';
+import { getCharactersByPage } from '../actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharactersService {
   private page = signal<number>(1);
-
-  charactersQuery = injectQuery(() => ({
-    queryKey: ['characters'],
-    queryFn: () => getCharacters(),
-  }));
 
   charactersByPageQuery = injectQuery(() => ({
     queryKey: ['characters', this.page()],
@@ -20,7 +15,6 @@ export class CharactersService {
   }));
 
   public setPage(newPage: number) {
-    console.log({ newPage });
     this.page.set(newPage);
   }
 

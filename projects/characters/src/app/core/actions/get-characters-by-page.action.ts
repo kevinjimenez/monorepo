@@ -1,10 +1,10 @@
 import { sleep } from '../../helpers/sleep';
-import { Character, CharactersResponse } from '../../interfaces';
+import { CharactersResponse } from '../../interfaces';
 
 export const getCharactersByPage = async (
   page: number,
   limit = 10
-): Promise<Character[]> => {
+): Promise<CharactersResponse> => {
   try {
     await sleep(1500);
 
@@ -17,9 +17,7 @@ export const getCharactersByPage = async (
 
     const characters: CharactersResponse = await response.json();
 
-    const { items } = characters;
-
-    return items;
+    return characters;
   } catch (error) {
     console.log({ error });
 
